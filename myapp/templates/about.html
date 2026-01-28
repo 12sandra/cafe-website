@@ -1,0 +1,267 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Café</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        body {
+            background-image: url("{% static 'images/cafe.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .page-overlay {
+            background: rgba(0, 0, 0, 0.65);
+            min-height: 100vh;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .card-img-top {
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .cafe-title {
+            color: #f8c471;
+            font-weight: bold;
+        }
+
+        .story-section {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
+        }
+
+        .story-section:hover {
+            background: rgba(255, 255, 255, 0.18);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .story-image {
+            border-radius: 15px;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .story-image:hover {
+            transform: scale(1.05);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        a {
+            color: white;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .story-section {
+                padding: 20px;
+            }
+            
+            .story-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="page-overlay">
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: rgba(0,0,0,0.8);">
+    <div class="container">
+        <a class="navbar-brand cafe-title" href="{% url 'index' %}">Café</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto gap-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'about' %}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'menu' %}">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'viewuser' %}">Table</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- TITLE SECTION -->
+<div class="container text-center text-light my-5 fade-in">
+    <h1 class="cafe-title" style="font-size: 3rem;">About Our Café</h1>
+    <p class="lead mt-3" style="color: #e8d4b8;">Discover the story behind every cup</p>
+</div>
+
+<!-- STORY SECTION 1 -->
+<div class="container mb-5">
+    <div class="story-section fade-in">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-6">
+                <h2 class="cafe-title mb-3">Our Journey Begins ☕</h2>
+                <p class="text-light" style="line-height: 1.8;">
+                    Welcome to our café, where passion for quality coffee meets warm hospitality. 
+                    Founded in 2015, we started with a simple vision: to create a space where people 
+                    can connect, relax, and enjoy the finest beverages and pastries. Every cup we serve 
+                    is crafted with care, using ethically sourced beans from around the world.
+                </p>
+                <p class="text-light" style="line-height: 1.8;">
+                    Our team of skilled baristas are dedicated to perfecting their craft, ensuring 
+                    each visit is memorable. From espresso to cold brew, we have something special for everyone.
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <img src="{% static 'images/cofee.jpg' %}" class="story-image" alt="Coffee Brewing">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- STORY SECTION 2 -->
+<div class="container mb-5">
+    <div class="story-section fade-in" style="animation-delay: 0.2s;">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-6 order-lg-2">
+                <h2 class="cafe-title mb-3">Quality & Craftsmanship 🎨</h2>
+                <p class="text-light" style="line-height: 1.8;">
+                    We believe that great coffee starts with great ingredients. That's why we partner 
+                    with local roasters and premium suppliers to bring you the best flavors. Our commitment 
+                    to quality extends beyond coffee—our pastries are baked fresh daily using traditional recipes.
+                </p>
+                <p class="text-light" style="line-height: 1.8;">
+                    Each detail matters, from the temperature of the water to the timing of the extraction. 
+                    Our baristas undergo continuous training to maintain the highest standards of excellence.
+                </p>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <img src="{% static 'images/pastries.jpg' %}" class="story-image" alt="Fresh Pastries">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- STORY SECTION 3 -->
+<div class="container mb-5">
+    <div class="story-section fade-in" style="animation-delay: 0.4s;">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-6">
+                <h2 class="cafe-title mb-3">Community & Connection 🤝</h2>
+                <p class="text-light" style="line-height: 1.8;">
+                    Our café is more than just a place to grab coffee—it's a community hub. We host 
+                    local artists, musicians, and creators, making our space vibrant and welcoming to all. 
+                    Whether you're here to work, study, or simply enjoy good company, we provide the 
+                    perfect atmosphere with comfortable seating and free Wi-Fi.
+                </p>
+                <p class="text-light" style="line-height: 1.8;">
+                    We're proud to support local businesses and sustainable practices. Every purchase 
+                    contributes to our mission of building a better, more connected community.
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <img src="{% static 'images/group.jpg' %}" class="story-image" alt="Café Community">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SPECIALTY CARDS SECTION -->
+<div class="container my-5">
+    <h2 class="cafe-title text-center mb-5" style="font-size: 2.5rem;">Our Specialties</h2>
+    
+    <div class="row g-4 pb-5">
+        <div class="col-md-4">
+            <div class="card glass-card h-100 text-light fade-in">
+                <img src="{% static 'images/pastriess.jpg' %}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title cafe-title">Artisan Pastries</h5>
+                    <p class="card-text">Freshly baked every morning using premium ingredients and traditional techniques.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card glass-card h-100 text-light fade-in" style="animation-delay: 0.1s;">
+                <img src="{% static 'images/premium coffee.jpg' %}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title cafe-title">Premium Coffee</h5>
+                    <p class="card-text">Single-origin, ethically sourced beans roasted to perfection by our expert baristas.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card glass-card h-100 text-light fade-in" style="animation-delay: 0.2s;">
+                <img src="{% static 'images/cakepiece.jpg' %}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title cafe-title">Delicious Cakes</h5>
+                    <p class="card-text">Decadent desserts crafted with love and the finest quality ingredients.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

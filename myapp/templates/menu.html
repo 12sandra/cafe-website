@@ -1,0 +1,356 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Café</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        body {
+            background-image: url("{% static 'images/cafe.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .page-overlay {
+            background: rgba(0, 0, 0, 0.65);
+            min-height: 100vh;
+            padding-bottom: 50px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .menu-table {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+        }
+
+        .menu-table thead {
+            background: rgba(248, 196, 113, 0.25);
+        }
+
+        .menu-table th {
+            color: #f8c471;
+            font-weight: bold;
+            border: none;
+            padding: 20px;
+            font-size: 1.1rem;
+        }
+
+        .menu-table td {
+            color: #e8d4b8;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 18px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-table tbody tr:hover {
+            background: rgba(248, 196, 113, 0.15);
+            transform: scale(1.02);
+        }
+
+        .cafe-title {
+            color: #f8c471;
+            font-weight: bold;
+        }
+
+        .category-section {
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .category-title {
+            color: #f8c471;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f8c471;
+        }
+
+        .menu-item-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item-card:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .item-name {
+            color: #f8c471;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .item-price {
+            color: #4db8a8;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .item-desc {
+            color: #c9b8a8;
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        a {
+            color: white;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .menu-table th,
+            .menu-table td {
+                padding: 12px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="page-overlay">
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: rgba(0,0,0,0.8);">
+    <div class="container">
+        <a class="navbar-brand cafe-title" href="{% url 'index' %}">Café</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto gap-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'menu' %}">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'viewuser' %}">Table</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- TITLE SECTION -->
+<div class="container text-center text-light my-5 fade-in">
+    <h1 class="cafe-title" style="font-size: 3rem;">Our Delicious Menu</h1>
+    <p class="lead mt-3" style="color: #e8d4b8;">Handcrafted beverages and pastries made with love</p>
+</div>
+
+<!-- MENU CONTENT -->
+<div class="container pb-5">
+
+    <!-- BEVERAGES SECTION -->
+    <div class="category-section fade-in">
+        <h2 class="category-title">☕ Beverages</h2>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="menu-item-card">
+                    <div class="item-name">Espresso</div>
+                    <div class="item-price">₹100</div>
+                    <div class="item-desc">Rich and bold, perfect for espresso lovers</div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="menu-item-card">
+                    <div class="item-name">Premium Coffee</div>
+                    <div class="item-price">₹120</div>
+                    <div class="item-desc">Freshly brewed from premium single-origin beans</div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="menu-item-card">
+                    <div class="item-name">Latte</div>
+                    <div class="item-price">₹130</div>
+                    <div class="item-desc">Smooth and creamy with a perfect milk-to-coffee ratio</div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="menu-item-card">
+                    <div class="item-name">Cappuccino</div>
+                    <div class="item-price">₹140</div>
+                    <div class="item-desc">Classic Italian style with rich espresso and velvety foam</div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="menu-item-card">
+                    <div class="item-name">Cold Brew</div>
+                    <div class="item-price">₹120</div>
+                    <div class="item-desc">Smooth and refreshing, perfect for hot days</div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="menu-item-card">
+                    <div class="item-name">Hot Chocolate</div>
+                    <div class="item-price">₹110</div>
+                    <div class="item-desc">Decadent and warming, topped with whipped cream</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PASTRIES SECTION -->
+    <div class="category-section fade-in" style="animation-delay: 0.2s;">
+        <h2 class="category-title">🥐 Pastries & Baked Goods</h2>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="menu-item-card">
+                    <div class="item-name">Chocolate Donut</div>
+                    <div class="item-price">₹80</div>
+                    <div class="item-desc">Soft and fluffy with rich chocolate glaze</div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="menu-item-card">
+                    <div class="item-name">Vanilla Croissant</div>
+                    <div class="item-price">₹95</div>
+                    <div class="item-desc">Buttery, flaky layers with a vanilla bean touch</div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="menu-item-card">
+                    <div class="item-name">Blueberry Muffin</div>
+                    <div class="item-price">₹90</div>
+                    <div class="item-desc">Fresh blueberries in a moist, tender muffin</div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="menu-item-card">
+                    <div class="item-name">Almond Danish</div>
+                    <div class="item-price">₹100</div>
+                    <div class="item-desc">Sweet and nutty with a delicate pastry crust</div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="menu-item-card">
+                    <div class="item-name">Pain au Chocolat</div>
+                    <div class="item-price">₹105</div>
+                    <div class="item-desc">Chocolate-filled French pastry, baked fresh daily</div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="menu-item-card">
+                    <div class="item-name">Cinnamon Roll</div>
+                    <div class="item-price">₹85</div>
+                    <div class="item-desc">Warm and aromatic with a sweet, spiced center</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DESSERTS SECTION -->
+    <div class="category-section fade-in" style="animation-delay: 0.4s;">
+        <h2 class="category-title">🍰 Cakes & Desserts</h2>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="menu-item-card">
+                    <div class="item-name">Chocolate Cake</div>
+                    <div class="item-price">₹150</div>
+                    <div class="item-desc">Rich layers with creamy chocolate frosting</div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="menu-item-card">
+                    <div class="item-name">Red Velvet Cake</div>
+                    <div class="item-price">₹160</div>
+                    <div class="item-desc">Elegant and sophisticated with a cream cheese frosting</div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="menu-item-card">
+                    <div class="item-name">Strawberry Cheesecake</div>
+                    <div class="item-price">₹170</div>
+                    <div class="item-desc">Creamy cheesecake with fresh strawberry topping</div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="menu-item-card">
+                    <div class="item-name">Tiramisu</div>
+                    <div class="item-price">₹140</div>
+                    <div class="item-desc">Classic Italian dessert with mascarpone and espresso</div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="menu-item-card">
+                    <div class="item-name">Carrot Cake</div>
+                    <div class="item-price">₹155</div>
+                    <div class="item-desc">Moist cake with walnuts and creamy icing</div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="menu-item-card">
+                    <div class="item-name">Brownie Delight</div>
+                    <div class="item-price">₹95</div>
+                    <div class="item-desc">Fudgy chocolate brownie, warm and decadent</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

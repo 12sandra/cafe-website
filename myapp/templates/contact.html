@@ -1,0 +1,298 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Café</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        body {
+            background-image: url("{% static 'images/cafe.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .page-overlay {
+            background: rgba(0, 0, 0, 0.65);
+            min-height: 100vh;
+            padding-bottom: 50px;
+        }
+
+        .cafe-title {
+            color: #f8c471;
+            font-weight: bold;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 50px auto;
+        }
+
+        .glass-form {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            transition: all 0.4s ease;
+        }
+
+        .glass-form:hover {
+            background: rgba(255, 255, 255, 0.18);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .form-label {
+            color: #f8c471;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #e8d4b8;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: #f8c471;
+            box-shadow: 0 0 15px rgba(248, 196, 113, 0.3);
+            color: #e8d4b8;
+        }
+
+        .form-control::placeholder {
+            color: rgba(232, 212, 184, 0.6);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #f8c471 0%, #e8a84c 100%);
+            border: none;
+            color: #2d2d2d;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #e8a84c 0%, #d89735 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(248, 196, 113, 0.4);
+            color: #2d2d2d;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .info-item {
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-icon {
+            font-size: 2rem;
+            color: #f8c471;
+            margin-bottom: 10px;
+        }
+
+        .info-title {
+            color: #f8c471;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .info-text {
+            color: #e8d4b8;
+            margin-top: 5px;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        a {
+            color: white;
+            font-weight: bold;
+        }
+
+        .section-divider {
+            border-top: 2px solid rgba(248, 196, 113, 0.4);
+            margin: 40px 0;
+        }
+
+        @media (max-width: 768px) {
+            .glass-form,
+            .contact-info {
+                padding: 25px;
+            }
+
+            .form-label {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="page-overlay">
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: rgba(0,0,0,0.8);">
+    <div class="container">
+        <a class="navbar-brand cafe-title" href="{% url 'index' %}">Café</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto gap-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'menu' %}">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'contact' %}">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'viewuser' %}">Table</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- TITLE SECTION -->
+<div class="container text-center text-light my-5 fade-in">
+    <h1 class="cafe-title" style="font-size: 3rem;">Get In Touch</h1>
+    <p class="lead mt-3" style="color: #e8d4b8;">We'd love to hear from you. Send us a message!</p>
+</div>
+
+<!-- CONTACT FORM & INFO -->
+<div class="contact-container">
+    <!-- CONTACT FORM -->
+    <div class="glass-form fade-in">
+        <h2 class="cafe-title text-center mb-4">Send us a Message</h2>
+
+        <form method="POST" action="{% url 'ins' %}">
+            {% csrf_token %}
+
+            <div class="mb-4">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" name="name" id="name" class="form-control" placeholder="Your name" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" name="email" id="email" class="form-control" placeholder="your@email.com" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="contact" class="form-label">Phone Number</label>
+                <input type="text" name="contact" id="contact" class="form-control" placeholder="+91 XXXXXXXXXX" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="feedback" class="form-label">Feedback & Suggestions</label>
+                <textarea name="feedback" id="feedback" class="form-control" placeholder="Share your feedback or suggestions..." rows="5" style="resize: none;"></textarea>
+            </div>
+
+            <input type="hidden" name="uid" value="CONTACT">
+
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </div>
+
+    <!-- CONTACT INFO -->
+    <div class="contact-info fade-in" style="animation-delay: 0.2s;">
+        <h2 class="cafe-title mb-4">Contact Information</h2>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div class="info-title">Location</div>
+                    <div class="info-text">123 Coffee Street<br>City, State 12345</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-item">
+                    <div class="info-icon">📞</div>
+                    <div class="info-title">Phone</div>
+                    <div class="info-text">+91-XXXXXXXXXX</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-item">
+                    <div class="info-icon">✉️</div>
+                    <div class="info-title">Email</div>
+                    <div class="info-text">info@café.com</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <h3 class="cafe-title mb-3">Business Hours</h3>
+        <div style="color: #e8d4b8; line-height: 1.8;">
+            <p><strong>Monday - Friday:</strong> 7:00 AM - 9:00 PM</p>
+            <p><strong>Saturday - Sunday:</strong> 8:00 AM - 10:00 PM</p>
+            <p><strong>Special Hours:</strong> Holiday hours may vary</p>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

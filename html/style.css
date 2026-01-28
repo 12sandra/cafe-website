@@ -1,0 +1,19 @@
+body{
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeW92uhOW5qa2UXup_kYk0CIE1nQnooGcLkA&s);
+    background-size: cover;
+}
+p{
+           background-color: rgb(3, 75, 18); 
+        }
+          h1#a1{
+        color: antiquewhite;
+       }
+       h1#a2{
+        color: aliceblue;
+        text-decoration: none;
+       }
+       h1#a3{
+        color:blue;
+        text-decoration: none;
+     
+       }
