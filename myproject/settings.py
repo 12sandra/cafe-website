@@ -25,14 +25,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-6qwf@235we0tieh&6osveo(p-lh=56^z8)gfdou=igjbn90hxt')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+DEBUG = False
 
 
 
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '.railway.app'
+    '.railway.app',
+    '*'  # Will be restricted in production - for now allows all
 ]
 
 
@@ -104,7 +105,8 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL')
+        default=os.environ.get('DATABASE_URL', 'sqlite:///db.sqlite3'),
+        conn_max_age=600
     )
 }
 # Password validation
