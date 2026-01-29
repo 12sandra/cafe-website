@@ -29,13 +29,21 @@ DEBUG = False
 
 
 
+# ALLOWED_HOSTS = [
+#     'localhost',
+#     '127.0.0.1',
+#     '.railway.app',
+#     '*'  # Will be restricted in production - for now allows all
+# ]
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '.railway.app',
-    '*'  # Will be restricted in production - for now allows all
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.railway.app",
+]
 
 
 # Application definition
