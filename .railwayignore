@@ -1,0 +1,13 @@
+.git
+.gitignore
+README.md
+.env
+db.sqlite3
+__pycache__
+*.pyc
+.venv
+venv
+*.egg-info
+.pytest_cache
+.coverage
+*.log
