@@ -56,6 +56,15 @@
             object-fit: cover;
         }
 
+        /* shorten transition times for faster, smoother carousel */
+        .carousel-fade .carousel-item {
+            transition: opacity .35s ease;
+        }
+
+        .carousel-item {
+            transition: transform .35s ease;
+        }
+
         a {
             color: white;
             font-weight: bold;
