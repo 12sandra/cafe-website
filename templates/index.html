@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My web Page</title>
+    <style>img.hero{display:block;margin:0 auto;max-width:100%;height:auto;}</style>
+</head>
+<body bgcolor="black" text="orange">
+    <h1 align="center"> Welcome to my webpage</h1>
+    <h2 align="right">Welcome to my webpage</h2>
+     <!-- <h3>Welcome to my webpage</h3>
+    <h4>Welcome to my webpage</h4>
+    <h5>Welcome to my webpage</h5>
+    <h6>Welcome to my webpage</h6> -->
+    <marquee direction="right" behavior="alternate">"AI will not replace humans, but augment them!"</marquee>
+    <marquee direction="left" behavior="slide" >"AI will not replace humans, but augment them!"</marquee>
+    <marquee direction="right" behavior="scroll" scrollamount="2">"AI will not replace humans, but augment them!"</marquee>
+    <p align="center" >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus, quaerat. Ab, sunt aperiam rerum tempore pariatur amet sit alias quod dolores aut laudantium aliquid error, suscipit nisi, quam illum dolore. </p>
+  <center>
+    <img src="{% static 'images/cafe.jpg' %}" class="hero" alt="Cafe" loading="eager"/>
+  </center>
+  <ol>
+    <li>Home</li>
+    <li>About</li>
+    <li>Contact</li>
+  </ol>
+  <ul>
+    <li>Home</li>
+    <li>About</li>
+    <li>Contact</li>
+  </ul>
+
+ <ol type="i">
+    <li>Home</li>
+    <li>About</li>
+    <li>Contact</li>
+  </ol>
+ <ul type="square">
+    <li>Home</li>
+    <li>About</li>
+    <li>Contact</li>
+  </ul>
+  <table border="5" bgcolor="white" >
+    <tr>
+        <th>Sl</th>
+        <th>Candidate name</th>
+        <th>Age</th>
+        <th>Email</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>ABC</td>
+        <td>13</td>
+        <td>abc@gmail.com</td>
+    </tr>
+  </table>
+  <a href="https://www.google.com/">Go to Home page</a>
+  
+</body>
+</html>
