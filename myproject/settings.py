@@ -45,6 +45,16 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.railway.app",
 ]
 
+# Allow setting the production site domain via env var so CSRF will accept requests
+# Example: SITE_URL=myapp.up.railway.app
+SITE_URL = os.environ.get('SITE_URL')
+if SITE_URL:
+    CSRF_TRUSTED_ORIGINS.append(f"https://{SITE_URL}")
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 
